@@ -9,7 +9,7 @@ class Config:
     """Base configuration class"""
     
     # Application URLs
-    BASE_URL = os.getenv("BASE_URL", "https://your-app-url.com")
+    BASE_URL = os.getenv("BASE_URL", "https://iso2.bodegaai.com/")
     LOGIN_URL = f"{BASE_URL}/login"
     USER_TYPES_URL = f"{BASE_URL}/user-types"
     PERMISSIONS_URL = f"{BASE_URL}/permissions"

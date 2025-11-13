@@ -94,13 +94,13 @@ def pytest_runtest_makereport(item, call):
         pytest.timestamp = lambda: __import__("datetime").datetime.now().strftime("%Y%m%d_%H%M%S")
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def base_url():
     """Provide base URL from config"""
     return config.BASE_URL
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def admin_credentials():
     """Provide admin credentials from config"""
     return {

@@ -1,10 +1,10 @@
 # iso2automation
 
-This repository automates the flows related to user type management in the ISO2 system.
+This repository automates the flows related to user type management and admin user management in the ISO2 system.
 
 ## Overview
 
-The project provides automated testing for CRUD (Create, Read, Update, Delete) operations of user types and their associated workflows. It ensures the reliability and consistency of key functionalities including permissions management and visualization settings.
+The project provides automated testing for CRUD (Create, Read, Update, Delete) operations of user types and their associated workflows, as well as comprehensive testing for admin user management including authentication, user creation, and logout functionality. It ensures the reliability and consistency of key functionalities including permissions management, visualization settings, and admin user operations.
 
 The project follows the **Page Object Model (POM)** design pattern for better maintainability and scalability.
 
@@ -15,6 +15,7 @@ The automation covers the following main flows:
 - **User Type CRUD Operations**: Automated testing of creating, reading, updating, and deleting user types
 - **Permission Configuration**: Automated workflows for setting and validating user permissions
 - **Visualization Settings**: Automated testing of UI visibility and display configurations for different user types
+- **Admin User Management**: Automated testing of admin user creation, authentication with email/verification code, and logout functionality
 
 ## Technology Stack
 
@@ -27,31 +28,33 @@ The automation covers the following main flows:
 
 ```
 iso2automation/
-├── config/                      # Configuration files
+├── config/                           # Configuration files
 │   ├── __init__.py
-│   └── config.py               # Environment and browser configurations
-├── pages/                       # Page Object Models
+│   └── config.py                    # Environment and browser configurations
+├── pages/                            # Page Object Models
 │   ├── __init__.py
-│   ├── base_page.py            # Base page with common methods
-│   ├── login_page.py           # Login page object
-│   ├── user_type_page.py       # User type management page object
-│   ├── permissions_page.py     # Permissions configuration page object
-│   └── visualization_page.py   # Visualization settings page object
-├── tests/                       # Test files
+│   ├── base_page.py                 # Base page with common methods
+│   ├── login_page.py                # Login page object (supports email/verification code)
+│   ├── organizations_page.py        # Organizations and admin user management page object
+│   ├── user_type_page.py            # User type management page object
+│   ├── permissions_page.py          # Permissions configuration page object
+│   └── visualization_page.py        # Visualization settings page object
+├── tests/                            # Test files
 │   ├── __init__.py
-│   ├── test_user_type_crud.py  # User type CRUD tests
-│   ├── test_permissions.py     # Permission configuration tests
-│   └── test_visualization.py   # Visualization settings tests
-├── utils/                       # Utility functions
+│   ├── test_admin_user_management.py # Admin user management tests
+│   ├── test_user_type_crud.py       # User type CRUD tests
+│   ├── test_permissions.py          # Permission configuration tests
+│   └── test_visualization.py        # Visualization settings tests
+├── utils/                            # Utility functions
 │   ├── __init__.py
-│   ├── helpers.py              # Helper functions
-│   └── logger.py               # Logging utilities
-├── .env.example                 # Environment variables template
-├── .gitignore                   # Git ignore file
-├── conftest.py                  # Pytest fixtures and hooks
-├── pytest.ini                   # Pytest configuration
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
+│   ├── helpers.py                   # Helper functions
+│   └── logger.py                    # Logging utilities
+├── .env.example                      # Environment variables template
+├── .gitignore                        # Git ignore file
+├── conftest.py                       # Pytest fixtures and hooks
+├── pytest.ini                        # Pytest configuration
+├── requirements.txt                  # Python dependencies
+└── README.md                         # This file
 ```
 
 ## Getting Started
@@ -124,6 +127,7 @@ Run tests with specific marker:
 pytest -m crud
 pytest -m permissions
 pytest -m visualization
+pytest -m admin
 ```
 
 Run tests in headed mode (visible browser):
@@ -145,6 +149,7 @@ The project uses pytest markers to categorize tests:
 - `@pytest.mark.crud` - CRUD operation tests
 - `@pytest.mark.permissions` - Permission configuration tests
 - `@pytest.mark.visualization` - Visualization settings tests
+- `@pytest.mark.admin` - Admin user management tests (authentication, user creation, logout)
 
 ## Page Object Model Structure
 
